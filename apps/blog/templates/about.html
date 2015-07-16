@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load myapp_markup %}
+{% block title %}About{% endblock %}
+{% block head %}
+<header class="main-header post-head no-cover">
+  {% include "widget/main-nav.html" %}
+</header>
+{% endblock %}
+{% block body %}
+<main class="content" role="main">
+    <article class="post page">
+
+        <header class="post-header">
+            <h1 class="post-title">About</h1>
+        </header>
+
+        <section class="post-content">
+            <p>{{about.content | md1 | safe}}</p>
+
+        </section>
+    </article>
+</main>
+{% endblock %}
+    
+ 

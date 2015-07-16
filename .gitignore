@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+venv
+timog/settings/prod.py
+collectedstatic
+.idea
+.DS_Store
+prod.py
+fabfile.py
+doc
+requirements
+db.sqlite3
+gunicorn_start.sh
+staticfiles

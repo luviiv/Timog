@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load myapp_markup %}
+{% block description %}Timog for life{%endblock%}
+{% block title %}For life{% endblock %}
+{% load staticfiles %}
+{% block head %}
+
+<header class="main-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
+
+    {% include "widget/main-nav.html" %}
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Timog...</h1>
+
+            <h2 class="page-description" style="padding-left:160px;">Log for Life</h2>
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+{% endblock %}
+
+
+
+{% block body %}
+<main id="content" class="content" role="main">
+    {% for blog in blogs %}
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="{{blog.get_absolute_url}}">{{blog.title}}</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p><a class="read-more" href="{{blog.get_absolute_url}}">{{blog.snippet}} &raquo;</a></p>
+        </section>
+        <footer class="post-meta">
+            {{blog.author.username}}
+            <time class="post-date" datetime='{{blog.add_time|date:"b d, Y"}}'>{{blog.add_time|date:"b d, Y"}}</time>
+        </footer>
+    </article>
+
+    {% endfor %}
+
+    <nav class="pagination" role="navigation">
+        <span class="page-number">Page {{blogs.number}} of {{blogs.paginator.num_pages}}</span>
+        {% if blogs.has_previous %}
+        <a class="newer-posts" href="/blog/page/{{blogs.previous_page_number}}">← Newer Posts</a>
+        {% endif %}
+        {% if blogs.has_next %}
+        <a class="older-posts" href="/blog/page/{{ blogs.next_page_number }}">Older Posts →</a>
+        {% endif %}
+
+    </nav>
+</main>
+
+
+{% endblock %}

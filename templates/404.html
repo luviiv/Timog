@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% load myapp_markup %}
+{% block title %}404{% endblock %}
+{% block head %}
+
+<header class="main-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
+
+    {% include "widget/main-nav.html" %}
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">404</h1>
+
+            <h2 class="page-description" style="padding-left:160px;">先写篇文章吧</h2>
+        </div>
+    </div>
+</header>
+{% endblock %}
